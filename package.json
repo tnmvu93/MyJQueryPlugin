@@ -1,0 +1,23 @@
+{
+  "name": "my_jquery_plugin",
+  "version": "1.0.0",
+  "description": "Based on the jQuery Boilerplate, I create a plugin that have some features: slide effect, autoplay, dots, arrows, callbacks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tnmvu93/MyJQueryPlugin.git"
+  },
+  "author": "Vu.TranNguyenMinh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tnmvu93/MyJQueryPlugin/issues"
+  },
+  "homepage": "https://github.com/tnmvu93/MyJQueryPlugin#readme",
+  "devDependencies": {
+    "browser-sync": "^2.15.0",
+    "gulp": "^3.9.1"
+  }
+}
