@@ -1,0 +1,27 @@
+.text-center {
+	text-align: center;
+}
+
+.vcarousel {
+	overflow: hidden;
+}
+
+.vcarousel ul {
+	list-style: none;
+	width: 20000em;
+	margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+li {
+	width: 748px;
+	height: 300px;
+	float: left;
+}
+
+image {
+	width: 748px;
+	height: 300px;
+	max-width: 100%;
+}
