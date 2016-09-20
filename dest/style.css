@@ -2,8 +2,30 @@
 	text-align: center;
 }
 
+.header {
+	text-align: center;
+	height: 200px;
+	margin: auto;
+}
+
+.header h1 {
+	text-align: center;
+	font-size: 100px;
+	font-weight: 700;
+	color: #F14E32;
+}
+
+.content {
+	background-color: gray;
+	position: relative;
+	margin: auto;
+}
+
 .vcarousel {
 	overflow: hidden;
+	border: 10px solid #fff;
+    max-width: 768px;
+    position: relative;
 }
 
 .vcarousel ul {
@@ -13,6 +35,41 @@
     padding: 0;
     position: relative;
 }
+
+.vcarousel a {
+	display: inline-block;
+    margin-right: 7px;
+}
+
+p.photo-credits {
+	position: absolute;
+	right: 15px;
+	bottom: 0;
+}
+
+p.photo-paging {
+	position: absolute;
+	bottom: 0;
+	margin: auto;
+	left: 50%;	
+}
+
+.glyphicon-menu-right, .glyphicon-menu-left {
+	position: absolute;
+	font-size: 20px;
+    top: 50%;
+    background: #4E443C;
+}
+
+.glyphicon-menu-left {
+	left: 15px;
+}
+
+.glyphicon-menu-right {
+	right: 15px;
+}
+
+
 
 li {
 	width: 748px;
