@@ -14,9 +14,15 @@
 		// minified (especially when both are regularly referenced in your plugin).
 
 		// Create the defaults once
-		var pluginName = "defaultPluginName",
+		var pluginName = "vCarousel",
 			defaults = {
-				propertyName: "value"
+				action: '',
+				numberImage: 3,
+				width: 748,
+				milestone: '.vcarousel ul',
+				dotIconContainer: '.photo-paging ',
+				initFunction: function () {},
+				otherFunction: function () {}
 			};
 
 		// The actual plugin constructor
@@ -43,13 +49,88 @@
 				// and this.settings
 				// you can add more functions like the one below and
 				// call them like the example below
-				this.yourOtherFunction( "jQuery Boilerplate" );
-			},
-			yourOtherFunction: function( text ) {
+				this.settings.initFunction();
 
-				// some logic
-				$( this.element ).text( text );
-			}
+				if ($(this.settings.milestone).data('position') == undefined) {
+					$(this.settings.milestone).data('position', 0);
+				}
+				
+				switch(this.settings.action) {
+					case 'goLeft': 
+						this.goLeft();
+						break;
+					case 'goRight':
+						this.goRight();
+						break;
+					case 'chooseImage':
+						this.chooseImage();
+						break;
+				}
+
+				this.settings.otherFunction();
+			},
+
+			goLeft: function() {
+				var self = this;
+				$(this.element).click(function() {
+					var oldPosition = $(self.settings.milestone).data('position');
+					var newPosition = oldPosition - 1;
+
+					if (newPosition < 0) {
+						newPosition = self.settings.numberImage - 1;
+					}
+
+					self.goToImage(oldPosition, newPosition);
+				})
+			},
+
+			goRight: function() {
+				var self = this;
+				$(this.element).click(function() {
+					var oldPosition = $(self.settings.milestone).data('position');
+					var newPosition = oldPosition + 1;
+
+					if (newPosition >= self.settings.numberImage) {
+						newPosition = 0;
+					}
+
+					self.goToImage(oldPosition, newPosition);
+				});
+			},
+
+			chooseImage: function() {
+				var self = this;
+				$(this.element).click(function() {
+					var oldPosition = $(self.settings.milestone).data('position');
+					var newPosition = $(this).index();
+
+					self.goToImage(oldPosition, newPosition);
+				})
+			},
+
+			goToImage: function (oldPosition, newPosition) {
+				if (oldPosition == newPosition) return;
+				
+				var milestone = $(this.settings.milestone);
+				milestone.css('left', -(newPosition * this.settings.width) + 'px');
+
+				this.updateDotIcon(oldPosition, newPosition);
+
+				milestone.data('position', newPosition);
+			},
+
+			updateDotIcon: function(oldPosition, newPosition) {
+				this.removeActiveClass(oldPosition);
+				this.addActiveClass(newPosition);
+			},
+
+			addActiveClass: function(newPosition) {
+				$(this.settings.dotIconContainer + ' a').eq(newPosition).addClass('active-img');
+			},
+
+			removeActiveClass: function(oldPosition) {
+				$(this.settings.dotIconContainer + ' a').eq(oldPosition).removeClass('active-img');
+			},
 		} );
 
 		// A really lightweight plugin wrapper around the constructor,

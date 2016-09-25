@@ -70,6 +70,11 @@ p.photo-paging {
     text-indent: -9999px;
 }
 
+.photo-paging a.active-img {
+    background: #4E443C;
+}
+
+
 .glyphicon-menu-right, .glyphicon-menu-left {
 	position: absolute;
 	font-size: 30px;
